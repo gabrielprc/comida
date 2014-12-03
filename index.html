@@ -34,6 +34,7 @@
     }
     #easter_egg {
       display: none;
+      width: 100%;
     }
   </style>
 </head>
@@ -54,6 +55,7 @@
       document.getElementById('yes').style.display = 'flex';
       document.getElementById('no').style.display = 'none';
       document.getElementById('exception').style.display = 'none';
+      setTimeout(function(){easterEgg(5000)}, 5000);
     } else {
       document.getElementById('no').style.display = 'flex';
       document.getElementById('exception').style.display = 'block';
@@ -61,7 +63,13 @@
     }
   }
   function easterEgg(time) {
-    
+    document.getElementById('yes').style.display = 'none';
+    document.getElementById('easter_egg').style.display = 'block';
+    setTimeout(function{
+      document.getElementById('yes').style.display = 'flex';
+      document.getElementById('easter_egg').style.display = 'none';
+    }, 500);
+    setTimeout(function(){easterEgg(time)}, time);
   }
   checkDay(new Date());
 </script>
