@@ -32,6 +32,9 @@
     #exception {
       font-size: 6%;
     }
+    #easter_egg {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -40,6 +43,7 @@
     No.
     <div id="exception">*Salvo que ayer fuera feriado</div>
   </div>
+  <img id="easter_egg" src="http://usvsth3m.com/wp-content/uploads/2013/12/LFMlGEp8.jpeg">
 </body>
 
 
@@ -55,6 +59,9 @@
       document.getElementById('exception').style.display = 'block';
       document.getElementById('yes').style.display = 'none';
     }
+  }
+  function easterEgg(time) {
+    
   }
   checkDay(new Date());
 </script>
