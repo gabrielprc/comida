@@ -1,61 +1,81 @@
 <!DOCTYPE html>
-<html><head>
-  <title>Â¿Hoy se traÃ­a comida?</title>
+<head>
+  <title>¿Hoy se traía comida?</title>
   <style>
-  body {
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-  }
-  div {
-    display: none;
-  }
-  #yes,#no {
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    vertical-align: middle;
-    align-content: center;
-    flex-direction: column;
-    text-align: center;
-    color: white;
-    font-family: Helvetica;
-    font-size: 13em;
-    font-weight: bold;
-  }
-  #no {
-    background: rgb(250, 80, 80);
-  }
-  #yes {
-    background: rgb(54, 215, 105);
-  }
-  #exception {
-    font-size: 6%;
-  }
+    body {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+    }
+    div {
+      color: white;
+      font-family: Helvetica;
+    }
+    #yes,#no {
+      display: none;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      vertical-align: middle;
+      align-content: center;
+      flex-direction: column;
+      text-align: center;
+      font-size: 13em;
+      font-weight: bold;
+    }
+    #no {
+      background: rgb(250, 80, 80);
+    }
+    #yes {
+      background: rgb(54, 215, 105);
+    }
+    #exception {
+      font-size: 6%;
+    }
+    #easter_egg {
+      display: none;
+      width: 100%;
+    }
+    #head {
+      position: absolute;
+      top: 0;
+      margin: 10px;
+    }
   </style>
 </head>
 <body>
-  <div id="yes" style="display: none;">Yes.</div>
-  <div id="no" style="display: flex;">
+  <div id="head">¿Hoy se traía comida?</div>
+  <div id="yes">Yes.</div>
+  <div id="no">
     No.
-    <div id="exception" style="display: block;">*Salvo que ayer fuera feriado</div>
+    <div id="exception">*Salvo que ayer fuera feriado</div>
   </div>
+  <img id="easter_egg" src="http://usvsth3m.com/wp-content/uploads/2013/12/LFMlGEp8.jpeg">
+</body>
 
 
-
-  <script>
+<script>
   function checkDay(date) {
     var weekDay = date.getDay();
     if (weekDay === 1 || weekDay === 3 || weekDay === 5) {
       document.getElementById('yes').style.display = 'flex';
       document.getElementById('no').style.display = 'none';
       document.getElementById('exception').style.display = 'none';
+      setTimeout(function(){easterEgg(5000)}, 5000);
     } else {
       document.getElementById('no').style.display = 'flex';
       document.getElementById('exception').style.display = 'block';
       document.getElementById('yes').style.display = 'none';
     }
   }
+  function easterEgg(time) {
+    document.getElementById('yes').style.display = 'none';
+    document.getElementById('easter_egg').style.display = 'block';
+    setTimeout(function{
+      document.getElementById('yes').style.display = 'flex';
+      document.getElementById('easter_egg').style.display = 'none';
+    }, 500);
+    setTimeout(function(){easterEgg(time)}, time);
+  }
   checkDay(new Date());
 </script>
-</body></html>
